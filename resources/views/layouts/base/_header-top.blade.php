@@ -14,22 +14,60 @@
         </div>
         <!--end::Left-->
         <!--begin::Topbar-->
-        <div class="topbar bg-primary">
-            <!--begin::User-->
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-sm-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-                    <div class="d-flex flex-column text-right pr-sm-3">
-                        <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-sm-inline">{{isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email}}</span>
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-sm-inline">Manager Development</span>
+         <div class="topbar bg-primary">
+            <div class="dropdown">        
+                <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px">
+                    <div class="btn btn-icon btn-hover-transparent-white w-sm-auto d-flex align-items-center btn-lg px-2">
+                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+                        <span class=" font-weight-bolder font-size-base d-none d-md-inline mr-3">{{isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email}}</span>
+                        <img alt="Laravel" src="{{asset('assets/media/icons/user.png')}}" width="40">  
                     </div>
-                    <span class="symbol symbol-35">
-                        <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">S</span>
-                    </span>
+                </div>
+                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg p-0 mt-3">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap p-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url({{url('assets/media/bg/bg-5.jpg')}})">
+                        <div class="d-flex align-items-center mr-2">
+                                <img alt="Laravel" src="{{asset('assets/media/icons/user.png')}}" width="40">
+                            <div class="text-white m-0 flex-grow-1 ml-3 mr-3 font-size-h5">{{isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email}}</div>
+                        </div>
+                    </div>
+
+
+                    <div class="navi navi-spacer-x-0 pt-5">
+                        <a href="#" class="navi-item px-8">
+                            <div class="navi-link">
+                                <div class="navi-icon mr-2">
+                                    <i class="flaticon2-calendar-3 text-success"></i>
+                                </div>
+                                <div class="navi-text">
+                                    <div class="font-weight-bold">
+                                        My Profile
+                                    </div>
+                                    <div class="text-muted">
+                                        Account settings and more
+                                        <span class="label label-light-danger label-inline font-weight-bold">update</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="navi-separator mt-3"></div>
+                        <div class="navi-footer  px-8 py-5">
+                            <a  class="btn btn-light-primary font-weight-bold"   href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!--end::User-->
         </div>
+
+        
         <!--end::Topbar-->
     </div>
+    
     <!--end::Container-->
 </div>
