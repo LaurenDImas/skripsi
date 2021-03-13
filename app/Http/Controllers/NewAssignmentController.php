@@ -264,7 +264,7 @@ class NewAssignmentController extends Controller
         if(!empty($output) && !empty($input['file_hidden'])){
             $output = array_merge($output, $input['file_hidden']);
         }else{
-            $output = $input['file_hidden'];
+            $output = $output;
         }
         $input['date'] = date("Y-m-d", strtotime($request->date));
         $input['project_id'] = $request->project_id;
