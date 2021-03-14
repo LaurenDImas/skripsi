@@ -112,6 +112,7 @@
                 @if (isset($data->file))
                     @foreach (json_decode($data->file) as $key => $picture)
                         <br>
+                            <img src="{{Storage::url($picture)}}" alt="" width="50" height="50">
                             <a href="{{Storage::url($picture)}}" class="delete" download="">
                             {{basename($picture)}}
                             <i class="flaticon-download"></i></a>
